@@ -1,0 +1,25 @@
+# Logs
+npm-debug.log*
+
+#Build folder
+dist
+client/build
+
+# Dependency directories
+node_modules/
+
+# TypeScript v1 declaration files
+typings/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# VsCode files
+launch.json
+.VsCode
+
+# Temporary files
+client/src/assets/img/uploads/
