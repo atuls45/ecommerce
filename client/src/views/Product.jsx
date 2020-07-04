@@ -81,7 +81,7 @@ class ProductList extends Component {
 
   onDeleteClick = (data) => {
     return () => {
-      this.props.onDelete(data._id, this.fetchProduct);
+      this.props.onDelete(data._id, this.fetchProduct, this.props.updateCartCount);
     };
   };
 
@@ -120,23 +120,27 @@ class ProductList extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {this.state.productData.map((pdata, key) => {
-                        return (
-                          <tr key={key}>
-                            {this.state.columns.map((prop, key) => {
-                              return <td key={key}>{pdata[prop.dataField]}</td>;
-                            })}
-                            <td style={{ 'min-width': '100px' }}>
-                              <span onClick={this.onEditClick(pdata)} style={{ padding: '5px', color: 'orange', cursor: 'pointer' }}>
-                                <i className="fa fa-pencil" />
-                              </span>
-                              <span onClick={this.onDeleteClick(pdata)} style={{ padding: '5px', color: 'red', cursor: 'pointer' }}>
-                                <i className="fa fa-trash" />
-                              </span>
-                            </td>
-                          </tr>
-                        );
-                      })}
+                      {this.state.productData.length > 0 ? (
+                        this.state.productData.map((pdata, key) => {
+                          return (
+                            <tr key={key}>
+                              {this.state.columns.map((prop, key) => {
+                                return <td key={key}>{pdata[prop.dataField]}</td>;
+                              })}
+                              <td style={{ 'min-width': '100px' }}>
+                                <span onClick={this.onEditClick(pdata)} style={{ padding: '5px', color: 'orange', cursor: 'pointer' }}>
+                                  <i className="fa fa-pencil" />
+                                </span>
+                                <span onClick={this.onDeleteClick(pdata)} style={{ padding: '5px', color: 'red', cursor: 'pointer' }}>
+                                  <i className="fa fa-trash" />
+                                </span>
+                              </td>
+                            </tr>
+                          );
+                        })
+                      ) : (
+                        <tr>No Products</tr>
+                      )}
                     </tbody>
                   </Table>
                 </div>
@@ -170,8 +174,8 @@ const mapDispatchToProps = (dispatch) => {
     onEdit: (post, fetchProduct) => {
       dispatch(editData(post, fetchProduct));
     },
-    onDelete: (id, fetchProduct) => {
-      dispatch(deleteData(id, fetchProduct));
+    onDelete: (id, fetchProduct, updateCount) => {
+      dispatch(deleteData(id, fetchProduct, updateCount));
     }
   };
 };

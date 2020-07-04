@@ -42,45 +42,48 @@ class ListProduct extends Component {
               category={<span>Don't miss the deal</span>}
               content={
                 <Row>
-                  {this.state.productData.map((item, key) => {
-                    return (
-                      <Col md={4} className="font-icon-list" key={key}>
-                        <div style={{ 'font-size': 'large' }} className="font-icon-detail">
-                          {/* <i className={prop} /> */}
-                          <img
-                            style={{ width: '100%', height: '300px', overflow: 'hidden' }}
-                            src={require('assets/img/uploads/' + item.file)}
-                            alt={item.Name}
-                          />
-                          <br />
-                          <br />
-                          <span className="pad-10">
-                            <b>Name:</b> {item.Name}
-                          </span>
-                          <br />
-                          <span className="pad-10">
-                            <b>Price:</b> ${item.Price}
-                          </span>
-                          <br />
-                          <span className="pad-10">
-                            <b>Description:</b> {item.Description}
-                          </span>
-                          <br />
-                          <Button
-                            style={{ margin: '8px' }}
-                            onClick={() => {
-                              this.updateCart(item._id, 1);
-                            }}
-                            bsStyle="success"
-                            fill
-                          >
-                            <i className="fa fa-plus-circle" /> Add to cart
-                          </Button>
-                          <br />
-                        </div>
-                      </Col>
-                    );
-                  })}
+                  {this.state.productData.length > 0 ? (
+                    this.state.productData.map((item, key) => {
+                      return (
+                        <Col md={4} className="font-icon-list" key={key}>
+                          <div style={{ 'font-size': 'large' }} className="font-icon-detail">
+                            <img
+                              style={{ width: '100%', height: '300px', overflow: 'hidden' }}
+                              src={require('assets/img/uploads/' + item.file)}
+                              alt={item.Name}
+                            />
+                            <br />
+                            <br />
+                            <span className="pad-10">
+                              <b>Name:</b> {item.Name}
+                            </span>
+                            <br />
+                            <span className="pad-10">
+                              <b>Price:</b> ${item.Price}
+                            </span>
+                            <br />
+                            <span className="pad-10">
+                              <b>Description:</b> {item.Description}
+                            </span>
+                            <br />
+                            <Button
+                              style={{ margin: '8px' }}
+                              onClick={() => {
+                                this.updateCart(item._id, 1);
+                              }}
+                              bsStyle="success"
+                              fill
+                            >
+                              <i className="fa fa-plus-circle" /> Add to cart
+                            </Button>
+                            <br />
+                          </div>
+                        </Col>
+                      );
+                    })
+                  ) : (
+                    <div style={{ color: 'red' }}>All products sold out!</div>
+                  )}
                 </Row>
               }
             />

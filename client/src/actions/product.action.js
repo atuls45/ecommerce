@@ -54,11 +54,12 @@ export const addData = function (obj, fetchProduct) {
 };
 
 //delete the row data from product
-export const deleteData = function (id, fetchProduct) {
+export const deleteData = function (id, fetchProduct, updateCount) {
   return (dispatch) => {
     const data = onDeleteById(id);
     data.then(function (data) {
       fetchProduct();
+      updateCount();
       if (data.success === true) {
         toast.success('Product deleted succesfully');
       } else {
@@ -68,23 +69,3 @@ export const deleteData = function (id, fetchProduct) {
     });
   };
 };
-
-//get advance filter data(copy this)
-// export const onSearchData = function (page, size, sort, str, disableSideBar) {
-//   return async (dispatch) => {
-//     await disableSideBar(true);
-//     const data = requestData(page, size, sort, str);
-//     data.then(function (data) {
-//       disableSideBar(false);
-//       if (data.success) {
-//         let tdata = JSON.parse(JSON.stringify(data.data).replace(/\:null/gi, ':""'));
-//         let paginate = data.paginate;
-//         dispatch({ type: RETRIVELPRODUCT, tdata, data });
-//         dispatch({ type: RETRIVELPAGINATIONDATA, paginate });
-//       } else {
-//         dispatch({ type: RETRIVELPRODUCT, tdata: [], data: [] });
-//         dispatch({ type: RETRIVELPAGINATIONDATA, paginate: { perPage: 50, pageCount: 0, totalCount: 0, currentPage: 1 } });
-//       }
-//     });
-//   };
-// };

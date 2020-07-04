@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { getCart, postEditData, getCount, onDeleteById } from '../api/cart.api';
+import { getCart, postEditData, getCount } from '../api/cart.api';
 
 export const RETRIVELCART = 'RETRIVELCART';
 export const RETRIVELADDDATA = 'RETRIVELADDDATA';
@@ -50,33 +50,3 @@ export const editData = function (id, value, updateCount) {
     });
   };
 };
-
-//delete the row data into cart
-export const deleteData = function (row) {
-  return (dispatch) => {
-    const data = onDeleteById(row);
-    data.then(function (data) {
-      dispatch({ type: RETRIVELCART, data });
-    });
-  };
-};
-
-//get advance filter data(copy this)
-// export const onSearchData = function (page, size, sort, str, disableSideBar) {
-//   return async (dispatch) => {
-//     await disableSideBar(true);
-//     const data = requestData(page, size, sort, str);
-//     data.then(function (data) {
-//       disableSideBar(false);
-//       if (data.success) {
-//         let tdata = JSON.parse(JSON.stringify(data.data).replace(/\:null/gi, ':""'));
-//         let paginate = data.paginate;
-//         dispatch({ type: RETRIVELCART, tdata, data });
-//         dispatch({ type: RETRIVELPAGINATIONDATA, paginate });
-//       } else {
-//         dispatch({ type: RETRIVELCART, tdata: [], data: [] });
-//         dispatch({ type: RETRIVELPAGINATIONDATA, paginate: { perPage: 50, pageCount: 0, totalCount: 0, currentPage: 1 } });
-//       }
-//     });
-//   };
-// };

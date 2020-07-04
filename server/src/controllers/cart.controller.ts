@@ -13,7 +13,7 @@ async function getCart(): Promise<{ data: any; totalPrice: number }> {
 async function CartCount(): Promise<{ cartCount: number }> {
   return await Cart.aggregate([{ $group: { _id: null, cartCount: { $sum: '$Quantity' } } }])
     .then(async (data: any) => {
-      return data ? data[0].cartCount : 0;
+      return data && data[0] ? data[0].cartCount : 0;
     })
     .catch((error: Error) => {
       throw error;

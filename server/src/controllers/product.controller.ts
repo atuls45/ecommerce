@@ -1,4 +1,5 @@
 import Product, { IProduct } from '../models/product.model';
+import CartController from './cart.controller';
 
 interface ICreateProductInput {
   Name: IProduct['Name'];
@@ -54,6 +55,7 @@ async function deleteProduct(id: any): Promise<any> {
     _id: id
   })
     .then(async (data) => {
+      await CartController.DeleteCart(id);
       return data;
     })
     .catch((error: Error) => {
