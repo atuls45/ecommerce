@@ -28,7 +28,7 @@ class Sidebar extends Component {
       <div id="sidebar" className="sidebar" data-color={this.props.color} data-image={this.props.image}>
         {this.props.hasImage ? <div className="sidebar-background" style={sidebarBackground} /> : null}
         <div className="logo">
-          <a href="https://atulpo.godaddysites.com/" className="simple-text logo-normal">
+          <a href="https://imsharmas.com/" className="simple-text logo-normal">
             Atul Sharma
           </a>
         </div>

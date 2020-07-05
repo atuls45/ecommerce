@@ -9,21 +9,12 @@ class Footer extends Component {
           <nav className="pull-left">
             <ul>
               <li>
-                <a href="#pablo">Home</a>
-              </li>
-              <li>
-                <a href="#pablo">Company</a>
-              </li>
-              <li>
-                <a href="#pablo">Portfolio</a>
-              </li>
-              <li>
-                <a href="#pablo">Blog</a>
+                <a href="https://imsharmas.com/">Portfolio</a>
               </li>
             </ul>
           </nav>
           <p className="copyright pull-right">
-            &copy; {new Date().getFullYear()} <a href="https://atulpo.godaddysites.com/">Atul sharma</a>, made with love for a better web
+            &copy; {new Date().getFullYear()} <a href="https://imsharmas.com/">Atul sharma</a>, made with love for a better web
           </p>
         </Grid>
       </footer>
